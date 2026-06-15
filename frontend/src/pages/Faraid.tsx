@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Faraid() {
   const { t } = useTranslation();
@@ -30,9 +31,10 @@ export default function Faraid() {
   };
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("faraid.title")}</h1>
-      <p className="text-gray-600">{t("faraid.description")}</p>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("faraid.title")} description={t("faraid.description")}
+        icon="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+        color="from-gray-600 to-gray-800" />
 
       <div className="bg-white rounded-xl shadow-md p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">{t("faraid.calculator")}</h2>
