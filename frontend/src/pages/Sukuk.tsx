@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Sukuk() {
   const { t } = useTranslation();
@@ -50,8 +51,8 @@ export default function Sukuk() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("sukuk.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("sukuk.title")} description="Asset-backed Islamic bonds. Buy units of real assets and receive proportional returns from genuine economic activity." icon="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" color="from-violet-500 to-violet-700" />
       {message && <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">{message}<button onClick={() => setMessage("")} className="float-right">&times;</button></div>}
 
       {/* Create Offering */}

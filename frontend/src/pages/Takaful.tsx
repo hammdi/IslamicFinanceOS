@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Takaful() {
   const { t } = useTranslation();
@@ -64,8 +65,8 @@ export default function Takaful() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("takaful.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("takaful.title")} description="Mutual micro-insurance pool. Members contribute monthly, claims verified by community vote. Surplus redistributed." icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" color="from-rose-500 to-rose-700" />
       {message && <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">{message}<button onClick={() => setMessage("")} className="float-right">&times;</button></div>}
 
       {/* Create Pool */}

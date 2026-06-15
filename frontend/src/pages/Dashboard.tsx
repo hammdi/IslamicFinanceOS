@@ -42,36 +42,39 @@ export default function Dashboard() {
       {user && loading && <Spinner />}
       {user && stats && (
         <div className="mb-10">
-          {/* Wallet Balance Hero */}
-          <div className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-6 text-white text-center mb-6 max-w-md mx-auto shadow-lg">
-            <p className="text-sm opacity-80">{t("dashboard.balance")}</p>
-            <p className="text-4xl font-bold mt-1">{stats.wallet_balance?.toFixed(2)} <span className="text-xl opacity-70">USD</span></p>
-            <Link to="/wallet" className="inline-block mt-3 bg-white/20 hover:bg-white/30 px-4 py-1 rounded text-sm">
-              {t("nav.wallet")}
+          {/* Top row: Wallet + Credit Score */}
+          <div className="grid md:grid-cols-2 gap-4 mb-6 max-w-2xl mx-auto">
+            <Link to="/wallet" className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-5 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+              <p className="text-xs opacity-80">{t("dashboard.balance")}</p>
+              <p className="text-3xl font-bold mt-1">{stats.wallet_balance?.toFixed(2)} <span className="text-lg opacity-70">USD</span></p>
+            </Link>
+            <Link to="/credit-score" className="bg-gradient-to-r from-gray-700 to-gray-900 rounded-2xl p-5 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
+              <p className="text-xs opacity-80">{t("nav.creditscore")}</p>
+              <p className="text-3xl font-bold mt-1">{stats.credit_score} <span className="text-lg opacity-70">/ 1000</span></p>
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl mx-auto stagger-children">
-            <div className="bg-white rounded-xl shadow p-3 text-center">
-              <p className="text-xl font-bold text-emerald-600">{stats.qard?.loans_requested}</p>
-              <p className="text-xs text-gray-500">{t("nav.qard")}</p>
-            </div>
-            <div className="bg-white rounded-xl shadow p-3 text-center">
-              <p className="text-xl font-bold text-blue-600">{stats.musharaka?.investments_made}</p>
-              <p className="text-xs text-gray-500">{t("nav.musharaka")}</p>
-            </div>
-            <div className="bg-white rounded-xl shadow p-3 text-center">
-              <p className="text-xl font-bold text-amber-600">{stats.tontine?.memberships}</p>
-              <p className="text-xs text-gray-500">{t("nav.tontine")}</p>
-            </div>
-            <div className="bg-white rounded-xl shadow p-3 text-center">
-              <p className="text-xl font-bold text-green-600">{stats.zakat?.total_given?.toFixed(0)}</p>
-              <p className="text-xs text-gray-500">{t("nav.zakat")}</p>
-            </div>
-            <div className="bg-white rounded-xl shadow p-3 text-center">
-              <p className="text-xl font-bold text-purple-600">{stats.waqf?.total_donated?.toFixed(0)}</p>
-              <p className="text-xs text-gray-500">{t("nav.waqf")}</p>
-            </div>
+          {/* Stats grid */}
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-2 max-w-5xl mx-auto stagger-children">
+            {[
+              { val: stats.qard?.count, label: t("nav.qard"), color: "text-emerald-600", path: "/qard" },
+              { val: stats.musharaka?.investments, label: t("nav.musharaka"), color: "text-blue-600", path: "/musharaka" },
+              { val: stats.tontine?.memberships, label: t("nav.tontine"), color: "text-amber-600", path: "/tontine" },
+              { val: stats.murabaha?.contracts, label: t("nav.murabaha"), color: "text-teal-600", path: "/murabaha" },
+              { val: stats.takaful?.pools, label: t("nav.takaful"), color: "text-rose-600", path: "/takaful" },
+              { val: stats.sukuk?.holdings, label: t("nav.sukuk"), color: "text-violet-600", path: "/sukuk" },
+              { val: `${stats.zakat?.total_given?.toFixed(0) || 0}$`, label: t("nav.zakat"), color: "text-green-600", path: "/zakat" },
+              { val: `${stats.waqf?.total_donated?.toFixed(0) || 0}$`, label: t("nav.waqf"), color: "text-purple-600", path: "/waqf" },
+              { val: `${stats.sadaqa?.total_donated?.toFixed(0) || 0}$`, label: t("nav.sadaqa"), color: "text-pink-600", path: "/sadaqa" },
+              { val: stats.hawala?.transfers, label: t("nav.hawala"), color: "text-cyan-600", path: "/hawala" },
+              { val: stats.savings_goals, label: t("nav.family"), color: "text-orange-600", path: "/family" },
+              { val: stats.transactions, label: t("nav.transactions"), color: "text-gray-600", path: "/transactions" },
+            ].map((s, i) => (
+              <Link key={i} to={s.path} className="bg-white rounded-xl shadow p-3 text-center animate-count-up card-hover">
+                <p className={`text-lg font-bold ${s.color}`}>{s.val}</p>
+                <p className="text-[10px] text-gray-500 truncate">{s.label}</p>
+              </Link>
+            ))}
           </div>
         </div>
       )}

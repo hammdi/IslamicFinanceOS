@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
+import InfoLabel from "../components/InfoLabel";
 
 const CATEGORIES = ["poor", "needy", "zakat_workers", "new_muslims", "debtors", "fi_sabilillah", "travelers"];
 
@@ -59,13 +61,17 @@ export default function Zakat() {
   };
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("zakat.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("zakat.title")}
+        description="One of the Five Pillars of Islam. Calculate 2.5% of your eligible wealth above the nisab threshold and distribute it to those in need."
+        icon="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        color="from-green-600 to-green-800" />
 
       {message && (
-        <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">
-          {message}
-          <button onClick={() => setMessage("")} className="float-right">&times;</button>
+        <div className="bg-green-50 text-green-700 p-4 rounded-xl text-sm flex items-center gap-2 animate-fade-in shadow-sm">
+          <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="flex-1">{message}</span>
+          <button onClick={() => setMessage("")} className="text-green-400 hover:text-green-600">&times;</button>
         </div>
       )}
 

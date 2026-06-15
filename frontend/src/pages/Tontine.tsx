@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Tontine() {
   const { t } = useTranslation();
@@ -56,8 +57,8 @@ export default function Tontine() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("tontine.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("tontine.title")} description="Community savings circle — members contribute monthly, one person receives the pot each cycle. Digital trust and accountability." icon="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" color="from-amber-500 to-amber-700" />
 
       {message && (
         <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">

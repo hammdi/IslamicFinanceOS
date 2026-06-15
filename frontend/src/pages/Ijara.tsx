@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Ijara() {
   const { t } = useTranslation();
@@ -45,8 +46,8 @@ export default function Ijara() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("ijara.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("ijara.title")} description="Lease an asset with option to purchase at end of term. Ownership risk stays with the platform until you buy." icon="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" color="from-orange-500 to-orange-700" />
 
       {message && (
         <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">

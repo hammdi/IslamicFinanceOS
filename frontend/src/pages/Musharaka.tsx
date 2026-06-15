@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
+import InfoLabel from "../components/InfoLabel";
 
 export default function Musharaka() {
   const { t } = useTranslation();
@@ -64,34 +66,38 @@ export default function Musharaka() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("musharaka.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("musharaka.title")}
+        description="Joint venture where all partners contribute capital and share profits AND losses proportionally. No guaranteed return — real risk, real partnership."
+        icon="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+        color="from-blue-500 to-blue-700" />
 
       {message && (
-        <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">
-          {message}
-          <button onClick={() => setMessage("")} className="float-right text-primary-400 hover:text-primary-600">&times;</button>
+        <div className="bg-primary-50 text-primary-700 p-4 rounded-xl text-sm flex items-center gap-2 animate-fade-in shadow-sm">
+          <svg className="w-5 h-5 text-primary-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="flex-1">{message}</span>
+          <button onClick={() => setMessage("")} className="text-primary-400 hover:text-primary-600">&times;</button>
         </div>
       )}
 
       {/* Create Project */}
-      <div className="bg-white rounded-xl shadow-md p-6">
+      <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">{t("musharaka.create")}</h2>
         <form onSubmit={handleCreate} className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t("musharaka.project_name")}</label>
+            <InfoLabel label={t("musharaka.project_name")} info="Name of the business project or venture seeking investment from the community." required />
             <input type="text" value={form.project_name} onChange={(e) => setForm((f) => ({ ...f, project_name: e.target.value }))} required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all hover:border-primary-300" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t("musharaka.target_amount")}</label>
+            <InfoLabel label={t("musharaka.target_amount")} info="Total capital needed for the project. Investors contribute portions of this amount." required />
             <input type="number" value={form.target_amount} onChange={(e) => setForm((f) => ({ ...f, target_amount: e.target.value }))} required min="1"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all hover:border-primary-300" />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t("musharaka.description")}</label>
+            <InfoLabel label={t("musharaka.description")} info="Detailed description of the project, business plan, and expected outcomes." required />
             <textarea value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} required rows={2}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-xl transition-all hover:border-primary-300" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">{t("musharaka.expected_profit")}</label>

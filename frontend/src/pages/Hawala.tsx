@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Hawala() {
   const { t } = useTranslation();
@@ -43,9 +44,8 @@ export default function Hawala() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("hawala.title")}</h1>
-      <p className="text-gray-600">{t("hawala.description")}</p>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("hawala.title")} description={t("hawala.description")} icon="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" color="from-cyan-600 to-cyan-800" />
 
       {message && <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm font-mono">{message}<button onClick={() => setMessage("")} className="float-right">&times;</button></div>}
 

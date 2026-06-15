@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 export default function Murabaha() {
   const { t } = useTranslation();
@@ -52,8 +53,8 @@ export default function Murabaha() {
   const installment = total / parseInt(form.installments_count || "1");
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("murabaha.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("murabaha.title")} description="The platform buys an asset and sells it to you at a known markup. You pay in installments. No interest — just a transparent fixed profit margin." icon="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" color="from-teal-500 to-teal-700" />
 
       {message && (
         <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">

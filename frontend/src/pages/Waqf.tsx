@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 const CATEGORIES = ["mosque", "school", "hospital", "water", "orphanage", "general"];
 
@@ -62,8 +63,8 @@ export default function Waqf() {
   const allWaqfs = [...myWaqfs, ...waqfs.filter((w) => !myWaqfs.find((m) => m.id === w.id))];
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("waqf.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("waqf.title")} description="Permanent endowment for community benefit — fund mosques, schools, hospitals. Your sadaqa jariya that benefits generations." icon="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" color="from-purple-500 to-purple-700" />
 
       {message && (
         <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import { api } from "../api/client";
 import Spinner from "../components/Spinner";
+import PageHeader from "../components/PageHeader";
 
 const CATEGORIES = ["education", "health", "food", "shelter", "orphans", "disaster", "general"];
 const catColors: Record<string, string> = {
@@ -47,8 +48,8 @@ export default function Sadaqa() {
   if (loading) return <Spinner />;
 
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-800">{t("sadaqa.title")}</h1>
+    <div className="space-y-8 animate-fade-in">
+      <PageHeader title={t("sadaqa.title")} description="Create or fund transparent charity campaigns. Every donation tracked, every expenditure documented with evidence." icon="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" color="from-pink-500 to-pink-700" />
 
       {message && (
         <div className="bg-primary-50 text-primary-700 p-3 rounded-lg text-sm">
