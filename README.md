@@ -1,291 +1,210 @@
 # IslamicFinance OS
 
-### Open-Source Ethical Finance Platform | منصة التمويل الأخلاقي مفتوحة المصدر
+### The World's Most Complete Open-Source Islamic Finance Platform
 
-> **No interest (riba). No exploitation. Just community.**
->
+### منصة التمويل الإسلامي الأكثر اكتمالاً في العالم — مفتوحة المصدر
+
+> **No interest. No exploitation. Just community.**
 > **لا ربا. لا استغلال. مجتمع فقط.**
 
 ---
 
-## Why Islamic Finance?
+## What is IslamicFinance OS?
 
-### لماذا التمويل الإسلامي؟
+A full-stack, production-ready platform implementing **20+ Sharia-compliant financial products** that can replace traditional banking for any community or country.
 
-Conventional banking is built on interest (riba/ربا) — the borrower always pays more than they received. This creates systemic inequality where capital grows by extracting from those who need it most.
-
-**Islamic finance** replaces interest with ethical alternatives rooted in risk-sharing, mutual aid, and real economic activity:
-
-- **No guaranteed return** — investors share risk with entrepreneurs
-- **No exploitation** — borrowers repay exactly what they borrowed
-- **Community-first** — savings groups (tontines) build collective wealth
-- **Full transparency** — every transaction is auditable on-chain
-
-النظام المصرفي التقليدي مبني على الفائدة (الربا) — يدفع المقترض دائمًا أكثر مما استلم. هذا يخلق عدم مساواة منهجية.
-
-**التمويل الإسلامي** يستبدل الفائدة ببدائل أخلاقية قائمة على تقاسم المخاطر والتعاون والنشاط الاقتصادي الحقيقي.
+**134 API endpoints | 27 modules | 46 database tables | 3 languages**
 
 ---
 
-## Products | المنتجات
+## Products
 
-### 1. Qard Hasan (قرض حسن) — Interest-Free Loan
+### Islamic Finance (7 products)
 
-A benevolent loan where the borrower returns **exactly** what they received. No interest, no fees. The lender earns spiritual reward (ajr), not profit.
+| Product | Arabic | Description |
+|---------|--------|-------------|
+| **Qard Hasan** | قرض حسن | Interest-free benevolent loans |
+| **Musharaka** | مشاركة | Profit & loss sharing partnerships |
+| **Tontine Digitale** | جمعية | Rotating community savings groups |
+| **Murabaha** | مرابحة | Cost-plus financing with installments |
+| **Ijara** | إجارة | Islamic leasing with purchase option |
+| **Takaful** | تكافل | Mutual micro-insurance (community-voted claims) |
+| **Sukuk** | صكوك | Asset-backed Islamic bonds |
 
-- Borrower submits a request with amount and purpose
-- Community members fund it collectively
-- Borrower repays the exact amount over time
-- Platform earns nothing — purely social good
+### Charity & Giving (3 products)
 
-### 2. Musharaka (مشاركة) — Profit-Sharing Partnership
+| Product | Arabic | Description |
+|---------|--------|-------------|
+| **Zakat** | زكاة | Obligatory charity calculator (2.5% of wealth) |
+| **Waqf** | وقف | Permanent community endowments |
+| **Sadaqa** | صدقة | Transparent voluntary charity campaigns |
 
-A joint venture where investors and entrepreneurs share both **profit and loss** proportionally. No guaranteed returns — this is what makes it halal.
+### Tools & Services (5 products)
 
-- Entrepreneur posts a project with target funding and expected profit
-- Investors contribute capital proportionally
-- Profits are distributed based on each investor's share
-- Losses are shared proportionally too — real risk, real partnership
+| Product | Arabic | Description |
+|---------|--------|-------------|
+| **Hawala** | حوالة | Cross-border money transfer (0.5% fee) |
+| **Halal Screener** | فاحص حلال | Sharia compliance checker for stocks |
+| **Faraid** | فرائض | Islamic inheritance calculator (Quran-based) |
+| **Marketplace** | سوق | Halal buy/sell marketplace |
+| **Time Banking** | بنك الوقت | Skill exchange without money (1h = 1 credit) |
 
-### 3. Tontine Digitale (جمعية) — Rotating Savings Group
+### Community & Governance (5 features)
 
-A community savings circle (known as Jam'iyya/جمعية in Arabic, Tontine in French-speaking regions). Members contribute a fixed amount each month, and one member receives the full pot each cycle.
+| Feature | Arabic | Description |
+|---------|--------|-------------|
+| **Shura** | شورى | Community governance voting (DAO-like) |
+| **Sulh** | صلح | Islamic dispute mediation (3 mediators + blockchain) |
+| **Credit Score** | تقييم | Halal trust score (0-1000, not debt-based) |
+| **Family Finance** | عائلة | Savings goals (Hajj, wedding, education) |
+| **Community Impact** | مجتمع | Impact metrics & success stories |
 
-- Groups of 5-20 people
-- Fixed monthly contribution
-- Payout order determined by lottery at group formation
-- Digital tracking ensures accountability and trust
+### Platform Infrastructure
+
+| Module | Description |
+|--------|-------------|
+| **Wallet** | Deposit, withdraw, transfer between users |
+| **Notifications** | Real-time alerts with unread count |
+| **Employee Portal** | KYC verification, support tickets, campaign approval, audit logs |
+| **Admin Dashboard** | Platform stats, user management, pending approvals |
+| **Audit Trail** | Blockchain hash viewer (Hashgraph) |
+| **Settings** | Dark mode, language, profile, security |
+| **Help Center** | Product guides, FAQ, report a problem |
+| **Landing Page** | Public marketing page with feature showcase |
 
 ---
 
-## Architecture | الهندسة المعمارية
+## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                     USERS / المستخدمون                    │
-│              (Browser — React + TypeScript)              │
-└──────────────────────┬──────────────────────────────────┘
-                       │ HTTP/REST
+┌────────────────────────────────────────────────────────────┐
+│                    FRONTEND (Port 3000)                      │
+│            React 18 + TypeScript + Tailwind CSS              │
+│   Sidebar Navigation | Dark Mode | i18n (EN/AR/FR) | RTL    │
+│                                                              │
+│   20+ Pages | PageHeader | InfoLabel | Animations            │
+└──────────────────────┬───────────────────────────────────────┘
+                       │ REST API (134 endpoints)
                        ▼
-┌─────────────────────────────────────────────────────────┐
-│                 FRONTEND (Port 3000)                     │
-│          React + TypeScript + Tailwind CSS               │
-│     i18n: English | العربية | Francais                   │
-│                                                         │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────────┐  │
-│  │Dashboard │ │Qard Hasan│ │Musharaka │ │  Tontine   │  │
-│  └──────────┘ └──────────┘ └──────────┘ └────────────┘  │
-└──────────────────────┬──────────────────────────────────┘
-                       │ REST API
-                       ▼
-┌─────────────────────────────────────────────────────────┐
-│                 BACKEND (Port 8000)                      │
-│                  FastAPI (Python)                        │
-│                                                         │
-│  ┌────────┐ ┌──────────┐ ┌───────────┐ ┌────────────┐  │
-│  │  Auth  │ │   Qard   │ │ Musharaka │ │  Tontine   │  │
-│  │  JWT   │ │  Router  │ │  Router   │ │  Router    │  │
-│  └────────┘ └──────────┘ └───────────┘ └────────────┘  │
-│                       │                                  │
-│              ┌────────┴────────┐                         │
-│              │  Hashgraph Audit │                        │
-│              │    Service       │                        │
-│              └─────────────────┘                         │
-└───────┬─────────────────────────────────┬───────────────┘
-        │                                 │
-        ▼                                 ▼
-┌───────────────┐                 ┌───────────────┐
-│  PostgreSQL   │                 │     Redis     │
-│  (Database)   │                 │  (Sessions)   │
-└───────────────┘                 └───────────────┘
+┌────────────────────────────────────────────────────────────┐
+│                    BACKEND (Port 8000)                       │
+│                   FastAPI (Python 3.12)                       │
+│                                                              │
+│   27 Router Modules | JWT Auth | Hashgraph Audit             │
+│   Employee Portal | KYC | Support Tickets | Credit Score     │
+└───────┬────────────────────────────────────┬─────────────────┘
+        │                                    │
+        ▼                                    ▼
+┌───────────────┐                    ┌───────────────┐
+│  PostgreSQL   │                    │     Redis     │
+│  46 Tables    │                    │   Sessions    │
+└───────────────┘                    └───────────────┘
 ```
+
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/hammdi/IslamicFinanceOS.git
+cd IslamicFinanceOS
+cp .env.example .env
+docker-compose up --build
+```
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:8000 |
+| Swagger Docs | http://localhost:8000/docs |
 
 ---
 
 ## Tech Stack
 
-| Layer      | Technology                     |
-| ---------- | ------------------------------ |
-| Frontend   | React 18, TypeScript, Tailwind |
-| Backend    | FastAPI (Python 3.12)          |
-| Database   | PostgreSQL 16                  |
-| Cache      | Redis 7                        |
-| Auth       | JWT (python-jose + bcrypt)     |
-| Audit      | Hashgraph SDK (Hedera)         |
-| Containers | Docker + docker-compose        |
-| i18n       | English, Arabic, French        |
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 18, TypeScript, Tailwind CSS, Vite |
+| Backend | FastAPI, SQLAlchemy, Pydantic |
+| Database | PostgreSQL 15 |
+| Cache | Redis 7 |
+| Auth | JWT + bcrypt |
+| Audit | Hashgraph SDK (Hedera) |
+| Containers | Docker + docker-compose |
+| i18n | English, Arabic (RTL), French |
 
 ---
 
-## Quick Start | البدء السريع
+## API Overview (134 endpoints)
 
-### Prerequisites
-
-- Docker and Docker Compose installed
-- Git
-
-### Run Locally
-
-```bash
-# Clone the repository
-git clone https://github.com/your-org/IslamicFinanceOS.git
-cd IslamicFinanceOS
-
-# Copy environment variables
-cp .env.example .env
-
-# Build and start all services
-docker-compose up --build
-
-# The application will be available at:
-#   Frontend: http://localhost:3000
-#   Backend API: http://localhost:8000
-#   API Docs: http://localhost:8000/docs
-```
-
-### Development
-
-```bash
-# Backend only
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-
-# Frontend only
-cd frontend
-npm install
-npm run dev
-```
+| Module | Endpoints | Key Operations |
+|--------|-----------|---------------|
+| Auth | 3 | register, login, me |
+| Wallet | 4 | balance, deposit, withdraw, transfer |
+| Qard Hasan | 6 | request, fund, repay, my, available |
+| Musharaka | 6 | create, invest, profit, my, available |
+| Tontine | 7 | create, join, pay, status, my |
+| Murabaha | 6 | request, approve, pay, schedule |
+| Ijara | 6 | request, approve, pay, purchase |
+| Takaful | 7 | create, join, contribute, claim, vote |
+| Hawala | 4 | send, track, collect, my |
+| Sukuk | 5 | create, buy, distribute-returns |
+| Zakat | 4 | calculate, distribute, history |
+| Waqf | 5 | create, donate, my, available |
+| Sadaqa | 6 | campaigns, donate, update, transparency |
+| Screener | 4 | check, halal-list, all |
+| Faraid | 2 | calculate, history |
+| Marketplace | 5 | listings, buy, propose, vote |
+| Credit Score | 2 | my, user |
+| Family | 4 | goals, contribute, withdraw |
+| Sulh | 5 | disputes, volunteer, resolve |
+| Time Bank | 6 | offers, request, complete, balance |
+| Community | 4 | impact, stories, like |
+| Employee | 16 | dashboard, KYC, tickets, logs, team |
+| Dashboard | 1 | comprehensive stats |
+| Notifications | 4 | list, unread-count, read, read-all |
+| Admin | 5 | stats, users, verify, approvals |
 
 ---
 
-## Database Schema | مخطط قاعدة البيانات
+## Deploy for Your Country
 
-| Table                  | Description                            |
-| ---------------------- | -------------------------------------- |
-| `users`                | User accounts                          |
-| `qard_hasan`           | Interest-free loan requests            |
-| `qard_contributions`   | Individual lender contributions        |
-| `musharaka`            | Profit-sharing partnership projects    |
-| `musharaka_investments` | Individual investments in partnerships |
-| `tontines`             | Rotating savings groups                |
-| `tontine_members`      | Members with payout order              |
-| `transactions`         | All financial movements + audit trail  |
+1. Fork this repository
+2. Configure `.env` with your database and JWT secrets
+3. Add your local language in `frontend/src/i18n/`
+4. Set your local currency
+5. `docker-compose up -d` on any server
+6. Configure Hedera Hashgraph mainnet for production audit trails
 
 ---
 
-## API Endpoints | نقاط الوصول
-
-### Authentication
-
-| Method | Endpoint         | Description       |
-| ------ | ---------------- | ----------------- |
-| POST   | `/auth/register` | Create account    |
-| POST   | `/auth/login`    | Login (get JWT)   |
-| GET    | `/auth/me`       | Current user info |
-
-### Qard Hasan (Interest-Free Loan)
-
-| Method | Endpoint           | Description            |
-| ------ | ------------------ | ---------------------- |
-| POST   | `/qard/request`    | Request a loan         |
-| GET    | `/qard/available`  | List pending requests  |
-| POST   | `/qard/{id}/fund`  | Fund a loan            |
-| POST   | `/qard/{id}/repay` | Repay (exact amount)   |
-
-### Musharaka (Profit-Sharing)
-
-| Method | Endpoint                 | Description          |
-| ------ | ------------------------ | -------------------- |
-| POST   | `/musharaka/create`      | Create project       |
-| GET    | `/musharaka/available`   | List open projects   |
-| POST   | `/musharaka/{id}/invest` | Invest in project    |
-| POST   | `/musharaka/{id}/profit` | Distribute profit    |
-
-### Tontine Digitale (Rotating Savings)
-
-| Method | Endpoint              | Description           |
-| ------ | --------------------- | --------------------- |
-| POST   | `/tontine/create`     | Create savings group  |
-| GET    | `/tontine/available`  | List forming groups   |
-| POST   | `/tontine/{id}/join`  | Join a group          |
-| POST   | `/tontine/{id}/pay`   | Monthly contribution  |
-| GET    | `/tontine/{id}/status`| Cycle status          |
-
-### Transactions
-
-| Method | Endpoint         | Description           |
-| ------ | ---------------- | --------------------- |
-| GET    | `/transactions/` | User's transaction history |
-
----
-
-## Deploying for Your Country | النشر لبلدك
-
-IslamicFinance OS is designed to be deployed by **any community, country, or organization** wanting to operate without interest.
-
-1. **Fork this repository**
-2. **Configure your `.env`** — set database credentials, JWT secret, and optional Hashgraph keys
-3. **Customize translations** — add your local language in `frontend/src/i18n/`
-4. **Deploy with Docker** — `docker-compose up -d` on any server
-5. **Add your local currency** — modify amount display throughout the frontend
-
-### Considerations for Production
-
-- Use a proper secrets manager for JWT keys and database passwords
-- Enable HTTPS with a reverse proxy (nginx/Caddy)
-- Set up database backups
-- Configure Hedera Hashgraph mainnet for immutable audit trails
-- Add KYC/AML compliance as required by your jurisdiction
-
----
-
-## Roadmap | خارطة الطريق
-
-- [ ] Mobile app (React Native)
-- [ ] Murabaha (cost-plus financing) product
-- [ ] Ijara (leasing) product
-- [ ] Sukuk (Islamic bonds) marketplace
-- [ ] Multi-currency support
-- [ ] Hedera Hashgraph mainnet integration
-- [ ] KYC/AML compliance module
-- [ ] Admin dashboard with analytics
-- [ ] SMS notifications for Tontine cycles
-- [ ] Sharia advisory board integration
-- [ ] Microfinance mode for rural communities
-
----
-
-## Islamic Finance Glossary | مصطلحات التمويل الإسلامي
+## Islamic Finance Glossary
 
 | Term | Arabic | Meaning |
-| --- | --- | --- |
-| Riba | ربا | Interest/usury — strictly prohibited |
-| Qard Hasan | قرض حسن | Benevolent/interest-free loan |
-| Musharaka | مشاركة | Joint venture/partnership |
-| Mudaraba | مضاربة | Silent partnership |
-| Tontine/Jam'iyya | جمعية | Rotating savings group |
+|------|--------|---------|
+| Riba | ربا | Interest/usury — prohibited |
+| Qard Hasan | قرض حسن | Benevolent interest-free loan |
+| Musharaka | مشاركة | Joint venture partnership |
+| Murabaha | مرابحة | Cost-plus financing |
+| Ijara | إجارة | Islamic leasing |
+| Takaful | تكافل | Islamic mutual insurance |
+| Sukuk | صكوك | Islamic bonds |
+| Hawala | حوالة | Money transfer network |
+| Zakat | زكاة | Obligatory charity (2.5%) |
+| Waqf | وقف | Permanent endowment |
+| Sadaqa | صدقة | Voluntary charity |
+| Faraid | فرائض | Islamic inheritance law |
+| Sulh | صلح | Mediation/reconciliation |
+| Shura | شورى | Consultation/governance |
 | Halal | حلال | Permissible |
 | Haram | حرام | Prohibited |
-| Ajr | أجر | Spiritual reward |
-| Sharia | شريعة | Islamic law |
-| Sukuk | صكوك | Islamic bonds |
-
----
-
-## Contributing
-
-Contributions are welcome. Please ensure:
-- Code follows existing conventions
-- All variables and comments are in English
-- UI strings go through the i18n system
-- No interest-based financial concepts are introduced
+| Nisab | نصاب | Minimum wealth threshold for Zakat |
 
 ---
 
 ## License
 
-MIT License — free for any community, country, or organization to use and modify.
+MIT License — free for any community, country, or organization.
 
 ---
 
